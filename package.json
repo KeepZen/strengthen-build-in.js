@@ -1,0 +1,13 @@
+{
+  "name": "@keepzen/strengthen-build-in.js",
+  "version": "0.0.0",
+  "description": "Javascript build-in lib reinforce",
+  "main": "index.js",
+  "author": "Keep Zen",
+  "scripts": {
+    "test": "npx jest",
+    "doc": "npx documentation build -f md -o ReadMe.md"
+  },
+  "license": "MIT",
+  "private": false
+}
