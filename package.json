@@ -1,6 +1,6 @@
 {
   "name": "@keepzen/strengthen-build-in.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Javascript build-in lib reinforce",
   "main": "index.js",
   "author": "Keep Zen",

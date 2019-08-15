@@ -7,7 +7,7 @@ const {
  * Match from `index`.
  * @method String.prototype.match
  * @param {String|ExgExp} pattern 
- * @param {int} index 
+ * @param {int} [index=0] 
  */
 function match(pattern, index) {
   if (

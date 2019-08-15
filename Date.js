@@ -7,7 +7,7 @@ const year = /%Y/g,
   second = /%S/g,
   dayOfWeek = /%u/g;
 
-require('./Number').start();
+const n = require('./Number');
 
 /**
  * @description
@@ -28,6 +28,7 @@ require('./Number').start();
  * @returns {String}
  */
 function format(fmt) {
+  n.start();
   return fmt.replace(year, this.getFullYear())
     .replace(month, (this.getMonth() + 1).toFixed(2))
     .replace(dayOfMonth, this.getDate().toFixed(2))

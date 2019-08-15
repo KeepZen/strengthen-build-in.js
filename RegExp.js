@@ -2,7 +2,7 @@ const { exec: _exec, test: _test } = RegExp.prototype;
 /**
  * @name Exgexp.prototype.exec
  * @param {String} str The string from which you want to exactor pattern.
- * @param {int} index  Match from where to begin.
+ * @param {int} [index=0]  Match from where to begin.
  */
 function exec(str, index = null) {
   return _helper_for_regex(this, _exec, index, str);
@@ -10,7 +10,7 @@ function exec(str, index = null) {
 /**
  * @name Exgexp.prototype.test
  * @param {String} str The string be tested.
- * @param {int} index
+ * @param {int} [index=0]
  * From where to begin the test, default is zero.
  */
 function test$(str, index = null) {
