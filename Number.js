@@ -7,6 +7,8 @@ const _toFixed = Number.prototype.toFixed;
  * console.log((1).toFixed(2.2) === '01.00');
  * console.log((-1).toFixed(2) === '-1');
  * console.log((-1).toFixed(3.1) === '-01.0');
+ * 
+ * @returns {String}
  */
 function toFixed(f) {
   if (f < 0) {

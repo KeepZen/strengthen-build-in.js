@@ -3,6 +3,7 @@ libs.push(require('./Array'));
 libs.push(require('./String'));
 libs.push(require('./RegExp'));
 libs.push(require('./Number'));
+libs.push(require('./Date'));
 /**
  *
  * You can use it as whole:
