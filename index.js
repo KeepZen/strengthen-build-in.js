@@ -10,7 +10,7 @@ libs.push(require('./Number'));
  * const {start} = require('@keepzen/strengthen-build-in.js');
  * start()
  * ```
- * Or you can just use a part, juse use ExgExp reinforce  as fellow:
+ * Or you can just use a part such as ExgExp as fellow:
  * ```js
  * const {start} = require('@keepzen/strengthen-build-in.js/ExgExp');
  * start()
