@@ -1,6 +1,6 @@
 {
   "name": "@keepzen/strengthen-build-in.js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Javascript build-in lib reinforce",
   "main": "index.js",
   "author": "Keep Zen",
@@ -10,5 +10,8 @@
     "doc": "npx documentation build -f md > ReadMe.md"
   },
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "@keepzen/fp": "^1.0.1"
+  }
 }
