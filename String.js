@@ -24,15 +24,17 @@ function match(pattern, index) {
   return ret;
 }
 
+const nameNewOldMap = new Map();
+const {
+  replaceMethodWithNew, recoverOldMethold,
+} = require('./_protypeOperator');
+
 const start = () => {
-  if (_match.length == 1) {
-    String.prototype.match = match;
-  }
+  nameNewOldMap.set('match', [match, _match]);
+  replaceMethodWithNew(prototype, nameNewOldMap);
 }
 const stop = () => {
-  if (prototype.match === match) {
-    prototype.match == _match;
-  }
+  recoverOldMethold(prototype, nameNewOldMap);
 }
 
 module.exports = {

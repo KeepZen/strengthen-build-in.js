@@ -17,12 +17,9 @@ function last() {
 function first() {
   return this[0];
 }
-const addPropers = new Set();
+const newProperSet = new Set();
 const prototype = Array.prototype;
-const config = {
-  enumerable: false,
-  configurable: true,
-};
+
 const _not = (fn) => (...args) => !fn(...args);
 
 /**
@@ -49,55 +46,17 @@ function order(fn) {
 function reject(fn) {
   return this.filter(_not(fn));
 }
+const { addNewProperty, deleteNewProperties } = require('./_protypeOperator');
 
 const start = () => {
-  const notHaveLast = !('last' in prototype);
-  if (notHaveLast) {
-    addPropers.add('last');
-    Object.defineProperty(
-      prototype,
-      'last',
-      {
-        get: last,
-        ...config,
-      }
-    );
-  }
-  const notHaveFirst = !('first' in prototype);
-  if (notHaveFirst) {
-    addPropers.add('first');
-    Object.defineProperty(
-      prototype,
-      'first',
-      {
-        get: first,
-        ...config,
-      }
-    )
-  }
-  const notHaveReject = !('reject' in prototype);
-  if (notHaveReject) {
-    addPropers.add('reject');
-    Object.defineProperty(prototype, 'reject', {
-      value: reject,
-      ...config,
-    });
-  }
-  const o = 'order';
-  const notHaveOrder = !(o in prototype);
-  if (notHaveOrder) {
-    addPropers.add(o);
-    Object.defineProperty(prototype, o, {
-      value: order,
-      ...config
-    });
-  }
+  addNewProperty('last', prototype, { get: last }, newProperSet);
+  addNewProperty('first', prototype, { get: first }, newProperSet);
+  addNewProperty('reject', prototype, { value: reject }, newProperSet);
+  addNewProperty('order', prototype, { value: order }, newProperSet);
 }
 
 const stop = () => {
-  [...addPropers].forEach(key => {
-    delete prototype[key];
-  })
+  deleteNewProperties(prototype, newProperSet);
 }
 module.exports = {
   start,

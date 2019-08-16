@@ -13,7 +13,7 @@ function exec(str, index = null) {
  * @param {int} [index=0]
  * From where to begin the test, default is zero.
  */
-function test$(str, index = null) {
+function test(str, index = null) {
   return _helper_for_regex(this, _test, index, str);
 }
 
@@ -27,13 +27,17 @@ const _helper_for_regex = (regex, method, index, str) => {
   return method.call(regex, str);
 }
 
+const nameNewOldMap = new Map();
+const {
+  replaceMethodWithNew, recoverOldMethold,
+} = require('./_protypeOperator');
 const start = () => {
-  RegExp.prototype.exec = exec;
-  RegExp.prototype.test = test$;
+  nameNewOldMap.set('exec', [exec, _exec]);
+  nameNewOldMap.set('test', [test, _test]);
+  replaceMethodWithNew(RegExp.prototype, nameNewOldMap);
 }
 const stop = () => {
-  RegExp.prototype.exec = _exec;
-  RegExp.prototype.test = _test;
+  recoverOldMethold(RegExp.prototype, nameNewOldMap);
 }
 
 module.exports = {

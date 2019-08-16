@@ -37,13 +37,14 @@ function format(fmt) {
     .replace(second, this.getSeconds())
     .replace(dayOfWeek, this.getDay());
 }
-const addProperty = new Set();
+const newPropertySet = new Set();
+const { addNewProperty, deleteNewProperties } = require('./_protypeOperator');
+
 const start = () => {
-  addProperty.add(`format`);
-  Date.prototype.format = format;
+  addNewProperty('format', Date.prototype, { value: format }, newPropertySet)
 }
 const stop = () => {
-  [...addProperty].forEach(key => delete Date.prototype[key]);
+  deleteNewProperties(Date.prototype, newPropertySet);
 }
 
 module.exports = {
