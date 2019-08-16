@@ -6,3 +6,13 @@ test('obj.not_instanceof(Type)', () => {
   expect(n.not_instanceof(Function)).toBe(true);
   stop();
 })
+
+test('Object.constant(obj)', () => {
+  start();
+  let obj = Object.constant({ z: 1 });
+  obj.a = 'a';
+  expect(`a` in obj).toBe(false);
+  delete obj.z;
+  expect(obj.z).toBe(1);
+  stop();
+})

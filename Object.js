@@ -46,13 +46,24 @@
 function not_instanceof(aClass) {
   return !(this instanceof aClass);
 }
+
+/**
+ * @name Object.constant
+ * @param {any} obj
+ * @returns {any} a constant object.
+ */
+const { constant } = require('@keepzen/fp');
+
+
 const { addNewProperty, deleteNewProperties } = require('./_protypeOperator');
 const newPropertySet = new Set();
 const start = () => {
   addNewProperty('not_instanceof', Object.prototype, { value: not_instanceof }, newPropertySet);
+  addNewProperty('constant', Object, { value: constant }, newPropertySet);
 }
 const stop = () => {
   deleteNewProperties(Object.prototype, newPropertySet);
+  deleteNewProperties(Object, newPropertySet);
 }
 
 module.exports = {
