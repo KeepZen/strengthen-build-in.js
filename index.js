@@ -4,6 +4,7 @@ libs.push(require('./String'));
 libs.push(require('./RegExp'));
 libs.push(require('./Number'));
 libs.push(require('./Date'));
+libs.push(require('./Object'));
 /**
  *
  * You can use it as whole:
