@@ -24,7 +24,7 @@
  * but **NOT** same as `!(object instaceof Type)`.
  * 
  * Now with help of `not_instanceof(Type)`,
- * not we can write code fellows our thought more smoothly:
+ * we can write code fellows our thought more smoothly:
  * ```js
  * if( object.not_instanceof(Type)){
  *    console.log('a');
