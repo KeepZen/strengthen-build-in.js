@@ -2,10 +2,10 @@ const notEnumeButConfigurable = {
   enumerable: false,
   configurable: true,
 };
-const addNewProperty = (name, prototype, config, newewPropertySet) => {
+const addNewProperty = (name, prototype, config, newPropertySet) => {
   const notHaveProperty = !(name in prototype);
   if (notHaveProperty) {
-    newewPropertySet.add(name);
+    newPropertySet.add(name);
     Object.defineProperty(
       prototype,
       name,

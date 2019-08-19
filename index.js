@@ -5,6 +5,7 @@ libs.push(require('./RegExp'));
 libs.push(require('./Number'));
 libs.push(require('./Date'));
 libs.push(require('./Object'));
+libs.push(require('./Set'));
 /**
  *
  * You can use it as whole:
