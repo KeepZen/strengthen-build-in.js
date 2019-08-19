@@ -1,3 +1,4 @@
+const _not_instanceof = (a, Type) => !(a instanceof Type)
 /**
  * If you want to check whether `object` is a instance of `Type`,
  * it just like:
@@ -44,17 +45,16 @@
  * @returns {boolean}
  */
 function not_instanceof(aClass) {
-  return !(this instanceof aClass);
+  return _not_instanceof(this, aClass);
 }
 
 const is_primary_type = function (v) {
-  v.not_instanceof(Object) || v === null;
+  return v == null || _not_instanceof(v, Object);
 }
 
 const _freeze = Object.freeze;
 const freeze_deep = (valueSet, v) => {
-  console.log(`v :${v}`);
-  if (Object.primary_type(v)) {
+  if (is_primary_type(v)) {
     return v;
   }
   if (valueSet.has(v) == false) {
@@ -116,7 +116,7 @@ const start = () => {
     newPropertySet
   );
   addNewProperty(
-    'primary_type',
+    'is_primary_type',
     Object,
     { value: is_primary_type },
     newPropertySet

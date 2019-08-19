@@ -39,7 +39,7 @@ const start = () => {
  * ```
  */
 const stop = () => {
-  lib.forEach(lib => lib.stop());
+  libs.forEach(lib => lib.stop());
 }
 
 module.exports = {

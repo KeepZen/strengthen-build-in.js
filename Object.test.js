@@ -6,7 +6,16 @@ test('obj.not_instanceof(Type)', () => {
   expect(n.not_instanceof(Function)).toBe(true);
   stop();
 })
-
+test('Object.primary_type(v)', () => {
+  start();
+  expect(Object.is_primary_type(1)).toBe(true);
+  expect(Object.is_primary_type("a")).toBe(true);
+  expect(Object.is_primary_type(null)).toBe(true);
+  expect(Object.is_primary_type(undefined)).toBe(true);
+  expect(Object.is_primary_type(Symbol())).toBe(true);
+  expect(Object.is_primary_type(Symbol)).toBe(false);
+  stop();
+})
 test('Object.freeze(obj)', () => {
   start();
   let obj = Object.freeze({ z: 1, objc: { a: 2 } });

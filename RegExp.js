@@ -29,7 +29,7 @@ const _helper_for_regex = (regex, method, index, str) => {
 
 const nameNewOldMap = new Map();
 const {
-  replaceMethodWithNew, recoverOldMethold,
+  replaceMethodWithNew, recoverOldMethod,
 } = require('./_protypeOperator');
 const start = () => {
   nameNewOldMap.set('exec', [exec, _exec]);
@@ -37,7 +37,7 @@ const start = () => {
   replaceMethodWithNew(RegExp.prototype, nameNewOldMap);
 }
 const stop = () => {
-  recoverOldMethold(RegExp.prototype, nameNewOldMap);
+  recoverOldMethod(RegExp.prototype, nameNewOldMap);
 }
 
 module.exports = {

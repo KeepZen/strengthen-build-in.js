@@ -26,7 +26,7 @@ function match(pattern, index) {
 
 const nameNewOldMap = new Map();
 const {
-  replaceMethodWithNew, recoverOldMethold,
+  replaceMethodWithNew, recoverOldMethod,
 } = require('./_protypeOperator');
 
 const start = () => {
@@ -34,7 +34,7 @@ const start = () => {
   replaceMethodWithNew(prototype, nameNewOldMap);
 }
 const stop = () => {
-  recoverOldMethold(prototype, nameNewOldMap);
+  recoverOldMethod(prototype, nameNewOldMap);
 }
 
 module.exports = {
