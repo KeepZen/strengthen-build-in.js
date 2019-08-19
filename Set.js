@@ -87,10 +87,10 @@ const start = () => {
     'not_has', prototype, { value: not_has }, newPropertySet
   );
   addNewProperty(
-    'diff', prototype, { value: diff, newPropertySet }
+    'diff', prototype, { value: diff, }, newPropertySet
   );
   addNewProperty(
-    'union', prototype, { value: union, newPropertySet }
+    'union', prototype, { value: union }, newPropertySet
   );
   addNewProperty(
     'intersection', prototype, { value: intersection }, newPropertySet

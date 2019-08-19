@@ -18,5 +18,5 @@ test('Object.freeze(obj)', () => {
   stop();
   obj = Object.freeze({ z: 1, objc: { a: 2 } });
   expect(Object.isFrozen(obj)).toBe(true);
-  expect(Object.isFrozen(obj.objc)).toBe(flase);
+  expect(Object.isFrozen(obj.objc)).toBe(false);
 })

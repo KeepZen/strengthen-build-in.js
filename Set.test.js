@@ -1,10 +1,4 @@
-
-
-Set.prototype.not_has = not_has;
-Set.prototype.diff = diff;
-Set.prototype.union = union;
-Set.prototype.intersection = intersection;
-Set.prototype.disjunctive = disjunctive;
+require('./Set').start();
 test('set.not_has(v)', () => {
   let a = new Set();
   expect(a.not_has(0)).toBe(!a.has(0));

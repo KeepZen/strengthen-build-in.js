@@ -10,8 +10,5 @@
     "doc": "npx documentation build -f md > ReadMe.md"
   },
   "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "@keepzen/fp": "^1.0.1"
-  }
+  "private": false
 }
