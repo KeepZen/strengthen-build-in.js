@@ -7,12 +7,16 @@ test('obj.not_instanceof(Type)', () => {
   stop();
 })
 
-test('Object.constant(obj)', () => {
+test('Object.freeze(obj)', () => {
   start();
-  let obj = Object.constant({ z: 1 });
+  let obj = Object.freeze({ z: 1, objc: { a: 2 } });
   obj.a = 'a';
   expect(`a` in obj).toBe(false);
   delete obj.z;
   expect(obj.z).toBe(1);
+  expect(Object.isFrozen(obj.objc)).toBe(true);
   stop();
+  obj = Object.freeze({ z: 1, objc: { a: 2 } });
+  expect(Object.isFrozen(obj)).toBe(true);
+  expect(Object.isFrozen(obj.objc)).toBe(flase);
 })
