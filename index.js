@@ -45,5 +45,6 @@ const stop = () => {
 module.exports = {
   start,
   stop,
+  ...require('./whether'),
 };
 

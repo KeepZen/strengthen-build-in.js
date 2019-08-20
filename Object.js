@@ -1,4 +1,4 @@
-const _not_instanceof = (a, Type) => !(a instanceof Type)
+const is_not_instance_of = (a, Type) => !(a instanceof Type)
 /**
  * If you want to check whether `object` is a instance of `Type`,
  * it just like:
@@ -45,11 +45,18 @@ const _not_instanceof = (a, Type) => !(a instanceof Type)
  * @returns {boolean}
  */
 function not_instanceof(aClass) {
-  return _not_instanceof(this, aClass);
+  return is_not_instance_of(this, aClass);
 }
-
+/**
+ * Check if `v` is primary type.
+ * If a value is not a instance of `Object`,
+ * it is a primary type.
+ * @name Object.is_primary_type
+ * @param {any} v 
+ * @returns {boolean}
+ */
 const is_primary_type = function (v) {
-  return v == null || _not_instanceof(v, Object);
+  return is_not_instance_of(v, Object);
 }
 
 const _freeze = Object.freeze;
