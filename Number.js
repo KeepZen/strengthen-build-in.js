@@ -1,18 +1,5 @@
 const _toFixed = Number.prototype.toFixed;
-/**
- * @name Number.prototype.toFixed
- * @param {uint} minIntegerLength
- * @param {uint} [maxFloatLength=null] 
- * if `maxFloatLong` be ignored, methold will same as the origin `toFixed`.
- * @example
- * console.log((1).toFixed(2) === '1.00');
- * console.log((1).toFixed(2,0) === '01');
- * console.log((1).toFixed(2,2) === '01.00');
- * console.log((-1).toFixed(2) === '-1.00');
- * console.log((-1).toFixed(3,1) === '-01.0');
- * 
- * @returns {String}
- */
+
 function toFixed(minIntegerLength, maxFloatLength = null) {
   if (minIntegerLength < 0) {
     throw RangeError(`Expect n greater than zero, but get ${minIntegerLength}`);

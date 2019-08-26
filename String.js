@@ -3,12 +3,6 @@ const {
   match: _match,
 } = prototype;
 
-/**
- * Match from `index`.
- * @method String.prototype.match
- * @param {String|ExgExp} pattern 
- * @param {int} [index=0] 
- */
 function match(pattern, index) {
   if (
     index == null ||

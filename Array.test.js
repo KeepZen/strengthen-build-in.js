@@ -36,3 +36,13 @@ test('array.reject(fn)', () => {
   expect(a1.reject(fn1)).toMatchObject(a1.filter(fn2));
   stop();
 })
+
+test('array.zip(arrayLike)', () => {
+  start();
+  let numbers = [1, 2, 3, 4];
+  let letters = ['a', 'b', 'c'];
+  let ret = numbers.zip(letters);
+  expect(ret.length).toBe(numbers.length);
+  expect(ret).toMatchObject([[1, "a"], [2, "b"], [3, "c"], [4, undefined]]);
+  stop();
+})

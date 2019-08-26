@@ -1,31 +1,3 @@
-/**
- * Check if a `v` is something.
- * 
- * Make the code read like English.
- * 
- * `is(v)` return a checker. A checker has fellow attributes:
- * 
- * 1. `a_number`
- * 2. `a_bigint`
- * 3. `a_number_or_bigint`
- * 4. `a_string`
- * 5. `a_boolean`
- * 6. `a_function`
- * 7. `a_object`
- * 8. `a_real_object`
- * 9. `a_empty_object`
- * 10. `a_primary`
- * @param {any} v 
- * @example
- * const {whether,is }= require('@keepzen/strengthen-build-in.js/whether');
- * let ret = whether(1).a_number;
- * console.log(`${ret === true}`);
- * ret = is(new Number(1)).a_number;
- * console.log(`${ret === true}`);
- * ret = is(1).not.a_string;
- * console.log(`${ret === true}`);
- * @returns {Checker}
- */
 const is = (v) => {
   const instanceOf = (type) => v instanceof type;
   const a_number = () => v instanceof Number || typeof v == 'number';
@@ -121,14 +93,22 @@ const is = (v) => {
     }
   );
 }
-
-/**
- * Alias of `is(v)`.
- * @arg {any} v
- * @returns {Checker}
- */
+const g = global || window;
+const start = () => {
+  g.is = is;
+  g.whether = g.whether;
+}
+const stop = () => {
+  if (g.is == is) {
+    delete g.is;
+  }
+  if (g.whether == whether) {
+    delete g.whether;
+  }
+}
 const whether = is;
 module.exports = {
   whether,
-  is
+  is,
+  start, stop
 }

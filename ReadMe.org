@@ -1,0 +1,398 @@
+#+OPTIONS: ^:{}
+[[https://img.shields.io/npm/v/@keepzen/strengthen-build-in.js.svg]]
+[[https://img.shields.io/npm/dm/@keepzen/strengthen-build-in.js.svg]]
+[[https://img.shields.io/npm/dt/@keepzen/strengthen-build-in.js.svg]]
+
+** start()
+
+You can use it as whole:
+
+#+BEGIN_SRC js
+const {start} = require('@keepzen/strengthen-build-in.js');
+start();
+#+END_SRC
+
+
+Or you can just use a part, such as ExgExp, as fellow:
+
+#+BEGIN_SRC js
+const {start} = require('@keepzen/strengthen-build-in.js/ExgExp');
+start()
+#+END_SRC
+
+** stop()
+
+Stop use the reinforce, recover to the buildin status.
+
+Recover the whole status to buildin:
+
+#+BEGIN_SRC js
+const {stop} = require('@keepzen/strengthen-build-in.js');
+stop();
+#+END_SRC
+
+
+Just recover RegExp to buildin.
+
+#+BEGIN_SRC js
+const {stop} = require('@keepzen/strengthen-build-in.js/RegExp');
+stop();
+#+END_SRC
+
+** Array.prototype.last
+
+Get the last element in the =array=, if =array= is empty, return =undefined=.
+
+*** Examples
+#+INCLUDE: "./Array.test.js" src js :lines "2-11"
+
+** Array.prototype.first
+
+Get the first element in the =array=, if =array= is empty, return =undefined=.
+
+*** Examples
+#+include: "./Array.test.js" src js :lines "11-19"
+
+** Array.prototype.order(fun)
+
+Sort the =arry= with =fun= get a new orderd array.
+
+`order(fun)` create a *new array*, but *not change* the origin array.
+
+*** Parameters
+
++ `fun`:`(a:any,b:any)=>int`
+
+Returns =Array=
+*** Examples
+#+include: "./Array.test.js" src js :lines "20-31"
+
+** Array.prototype.reject(fun)
+
+Filter out the =array=.
+
+If =fun= return =true= , the =ele= will not included in result, else included.
+
+*** Parameters
+
+- =fun=: =(ele:any,index:int)=> boolean=
+
+Returns =Array=.
+*** Examples
+#+include: "./Array.test.js" src js :lines "31-39"
+
+** Array.prototype.zip(arrayLikelyObj)
+Zip the =array= with =arrayLikelyObj=.
+
+*** Parameters
++ =arrayLikelyObj= : An array likly object
+*** Examples
+#+include: "./Array.test.js" src js :lines "40-49"
+
+** String.prototype.match(regexp[,index])
+
+Match the =string= from =index=.
+
+*** Parameters
+
++ =pattern=: =(String|ExgExp)= 
+- =index=: int (optional, default `0`)
+
+*** Examples
+#+include: "./String.test.js" src :lines "3-14"
+
+** Exgexp.prototype.exec(str[,index])
+
+*** Parameters
+
+-   =str=: String. The string from which you want to exactor pattern.
+-   =index=:int. Match from where to begin. (optional, default `0`)
+*** Examples
+#+include: "./RegExp.test.js" src js :lines "3-20"
+
+** Exgexp.prototype.test(str[,index])
+
+*** Parameters
+
+-   =str=:String. The string be tested.
+-   =index=:int. From where to begin the test, default is zero. (optional, default `0`)
+*** Examples
+#+include: "./RegExp.test.js" src js :lines "21-37"
+
+** Number.prototype.toFixed(minIntegerLength[,maxFloatLength])
+
+*** Parameters
+
+- =minIntegerLength=:uint.
+- =maxFloatLength=:uint. If =maxFloatLong= be ignored, methold will same as the origin `toFixed`. (optional, default `null`)
+
+Returns String. 
+
+*** Examples
+#+include: "./Number.test.js" src js :lines "1-12"
+    
+** Date.prototype.format(fmt)
+
+Like the Unix `date` format. But just subset.
+
+| Fortmat | Description                     |
+|---------+---------------------------------|
+| %Y      | year full digit                 |
+| %m      | month (01..12)                  |
+| %d      | day of month (e.g., 01)         |
+| %H      | hour (00..23)                   |
+| %M      | minute (00..59)                 |
+| %S      | second (00..60)                 |
+| %u      | day of week (1..7); 1 is Monday |
+
+*** Parameters
+
+-  =fmt=: string
+
+Returns String.
+*** Examples
+#+include: "./Date.test.js" src js :lines "1-15"
+
+** Date.prototype.after({d,m,s})
+Get the time after this date,with unit of *d*-ay, *m*-inute, or *s*-econd.
+*** parameters
++ {d}: d:uint. Unit with day, default is 0.
++ {m}: m:unit. Unit with minute, default is 0.
++ {s}: s:unit. Unit with second, dfault is 0.
+
+Retun a Date after the special time.
+*** Examples
+#+include: "./Date.test.js" src js :lines "15-22"
+** Date.prototype.plus({d,m,s})
+Alias of =Date.prototype.after()=
+
+Retun a Date after the special time.
+*** Examples
+#+include: "./Date.test.js" src js :lines "24-33"
+
+** Date.prototype.before({d,m,s})
+Get the time before this date, with unit  *d*-ay, *m*-inute, or *s*-econd.
+*** parameters
++ {d}: d:uint. Unit with day, default is 0.
++ {m}: m:unit. Unit with minute, default is 0.
++ {s}: s:unit. Unit with second, dfault is 0.
+
+Retun a Date after the special time.
+*** Examples
+#+include: "./Date.test.js" src js :lines "34-41"
+
+** Date.prototype.minus({d,m,s})
+Alias of =Date.prototype.before()=.
+
+** Object.prototype.not_instanceof(obj)
+
+If you want to check whether =object= is a instance of =Type=,
+it just like:
+
+#+BEGIN_SRC js
+if(object instanceof Type){
+   console.log('a');
+}else{
+   console.log('b');
+}
+#+END_SRC
+
+
+So, the fellow lines are what I wrote, when I want to 
+check whether =object= is not a instaceof =Type=:
+
+#+BEGIN_SRC js
+if( ! object instaceof Type ){
+   console.log('a');
+}else{
+   console.log(`b`);
+}
+#+END_SRC
+
+But it is *WRONG*.
+
+Because =! object instaceof Type= is same as =!(object) instaceof Type=, 
+but *NOT* same as =!(object instaceof Type)=.
+
+Now with help of =not_instanceof(Type)=,
+we can write code fellows our thought more smoothly:
+
+#+BEGIN_SRC js
+if( object.not_instanceof(Type)){
+   console.log('a');
+}else{
+   console.log('b');
+}
+#+END_SRC
+
+
+*** Parameters
+
+-  aClass: Class
+
+Returns boolean.
+*** Examples
+#+include: "./Object.test.js" src js :lines "2-9"
+
+** Object.is_primary_type(v)
+
+Check if =v= is primary type.
+If a value is not a instance of =Object=,
+it is a primary type.
+
+*** Parameters
+
+-   =v=: any 
+
+Returns boolean.
+*** Examples
+#+include: "./Object.test.js" src js :lines "9-19"
+
+** Object.freeze(v)
+
+=Object.constant= rename to =Object.freeze=.
+
+*** Parameters
+
+-   =v=: any 
+-   =arg$1=: Object  (optional, default `{deep:true}`)
+
+*** Examples
+#+include: "./Object.test.js" src js :lines "19-32"
+
+** Set.prototype.not_has(v)
+
+*** Parameters
+
+-   =v= :any
+
+Returns boolean 
+*** Examples
+#+include: "./Set.test.js" src js :lines "2-6"
+** Set.prototype.diff(iteratable)
+
+Support A is {a,b}, B is {b,c,d},
+then C = A - B = {a}.
+
+In Math, that is
+
+$$
+\forall e \in C, \implies e \in A,\text{ and } e \notin B
+$$.
+
+*** Parameters
+
+-   aSet:(Iteratable)
+
+Returns Set.
+
+*** Examples
+#+include: "./Set.test.js" src js :lines "6-12"
+
+** Set.prototype.union(iteratable)
+
+Support A= {a,b}, B = {b,c,d},
+then C = A \cup{} B  = {a,b,c,d}.
+
+In Math as 
+
+$$
+\forall e \in C, \implies e \in A \text{ or } e \in B
+$$
+
+*** Parameters
+
+-   aSet: Iteratable 
+
+Returns Set.
+
+*** Examples
+#+include: "./Set.test.js" src js :lines "12-21"
+
+** Set.prototype.intersection(aIteratable)
+
+Support A is {a,b}, B is {b,c,d},
+then C = A \cap{} B = {b}.
+In Math
+
+$$
+\forall e\in C, \implies e \in A \text{ and } e \in B
+$$
+
+*** Parameters
+
+-   aSet: Iteratable 
+
+Returns Set.
+
+*** Examples
+#+include: "./Set.test.js" src js :lines "22-31"
+
+** Set.prototype.disjunctive(aIteratable)
+
+A is {a,b}, B is {b,c,d}
+The C = A \Delta{} B = {a,c,d}
+In Math \forall e \in C, e \in A and e\in B but 
+e \notin A \cup B.
+
+Also name as `symDiff` short for symmetric difference.
+
+*** Parameters
+
+-   aSet: Iteratable 
+
+Returns Set.
+
+*** Examples
+#+include: "./Set.test.js" src js :lines "32-40"
+
+** Set.prototype.symDiff(aIteratable)
+
+`symDiff` short for symmetric difference.
+
+Alias of `Set.prototype.disjunctive(aSet)`.
+
+** is(v)
+
+Check  a =v= if is something.
+
+Make the code read like English.
+
+=is(v)= return a checker. A checker has fellow attributes:
+
+1.  a_number
+2.  a_bigint
+3.  a_number_or_bigint
+4.  a_string
+5.  a_boolean
+6.  a_function
+7.  a_object
+8.  a_real_object
+9.  a_empty_object
+10. a_primary
+
+And a method =checker.instanceof(Type)=.
+
+*** Parameters
+
+-  =v=:any
+Returns *Checker*. 
+
+*** Examples
+#+include: "./whether.test.js" src js :lines "9-26"
+
+** checker.instanceof(aType)
+*** Parameters
++ aType:Type
+
+Return boolean.
+
+*** Examples
+#+include: "./whether.test.js" src js :lines "1-9"
+
+** whether
+
+Alias of is(v).
+
+
+
