@@ -31,6 +31,16 @@ function before({ d = 0, h = 0, m = 0, s = 0 } = {}) {
   const milliSeconds = this.valueOf() - (d * secsPerDay + h * secsPerHour + m * secsPerMinu + s) * 1000;
   return new Date(milliSeconds);
 }
+
+function getTimeZone() {
+  const zh = -this.getTimezoneOffset() / 60;
+  if (zh > 0) {
+    return '+' + zh;
+  } else {
+    return zh + ""
+  }
+}
+
 const newPropertySet = new Set();
 const { addNewProperty, deleteNewProperties } = require('./_protypeOperator');
 
@@ -40,6 +50,7 @@ const start = () => {
   addNewProperty('plus', Date.prototype, { value: after }, newPropertySet);
   addNewProperty('before', Date.prototype, { value: before }, newPropertySet);
   addNewProperty('minus', Date.prototype, { value: before }, newPropertySet);
+  addNewProperty('timeZone', Date.prototype, { get: getTimeZone }, newPropertySet);
 }
 const stop = () => {
   deleteNewProperties(Date.prototype, newPropertySet);

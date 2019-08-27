@@ -38,3 +38,8 @@ test('data.before()', () => {
   let before10Minus = date.before({ m: 10 });
   expect(before10Minus - date).toBe(-10 * 60 * 1000);
 })
+
+test("date.timeZone", () => {
+  let date = new Date();
+  expect(date.timeZone).toBe('+8');
+})

@@ -184,6 +184,10 @@ Retun a Date after the special time.
 ** Date.prototype.minus({d,m,s})
 Alias of =Date.prototype.before()=.
 
+** Date.prototype.timeZone :=string=
+The time zone of current system. 
+#+include: "./Date.test.js" src js :lines "42-46"
+
 ** Object.prototype.not_instanceof(obj)
 
 If you want to check whether =object= is a instance of =Type=,
