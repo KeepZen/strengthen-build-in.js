@@ -57,11 +57,11 @@ Get the first element in the =array=, if =array= is empty, return =undefined=.
 
 Sort the =arry= with =fun= get a new orderd array.
 
-`order(fun)` create a *new array*, but *not change* the origin array.
+=order(fun)= create a *new array*, but *not change* the origin array.
 
 *** Parameters
 
-+ `fun`:`(a:any,b:any)=>int`
++ =fun=:=(a:any,b:any)=>int=
 
 Returns =Array=
 *** Examples
@@ -96,7 +96,7 @@ Match the =string= from =index=.
 *** Parameters
 
 + =pattern=: =(String|ExgExp)= 
-- =index=: int (optional, default `0`)
+- =index=: int (optional, default =0=)
 
 *** Examples
 #+include: "./String.test.js" src :lines "3-14"
@@ -106,7 +106,7 @@ Match the =string= from =index=.
 *** Parameters
 
 -   =str=: String. The string from which you want to exactor pattern.
--   =index=:int. Match from where to begin. (optional, default `0`)
+-   =index=:int. Match from where to begin. (optional, default =0=)
 *** Examples
 #+include: "./RegExp.test.js" src js :lines "3-20"
 
@@ -115,7 +115,7 @@ Match the =string= from =index=.
 *** Parameters
 
 -   =str=:String. The string be tested.
--   =index=:int. From where to begin the test, default is zero. (optional, default `0`)
+-   =index=:int. From where to begin the test, default is zero. (optional, default =0=)
 *** Examples
 #+include: "./RegExp.test.js" src js :lines "21-37"
 
@@ -124,7 +124,7 @@ Match the =string= from =index=.
 *** Parameters
 
 - =minIntegerLength=:uint.
-- =maxFloatLength=:uint. If =maxFloatLong= be ignored, methold will same as the origin `toFixed`. (optional, default `null`)
+- =maxFloatLength=:uint. If =maxFloatLong= be ignored, methold will same as the origin =toFixed=. (optional, default =null=)
 
 Returns String. 
 
@@ -133,7 +133,7 @@ Returns String.
     
 ** Date.prototype.format(fmt)
 
-Like the Unix `date` format. But just subset.
+Like the Unix =date= format. But just subset.
 
 | Fortmat | Description                     |
 |---------+---------------------------------|
@@ -205,7 +205,7 @@ check whether =object= is not a instaceof =Type=:
 if( ! object instaceof Type ){
    console.log('a');
 }else{
-   console.log(`b`);
+   console.log('b');
 }
 #+END_SRC
 
@@ -255,7 +255,7 @@ Returns boolean.
 *** Parameters
 
 -   =v=: any 
--   =arg$1=: Object  (optional, default `{deep:true}`)
+-   =arg$1=: Object  (optional, default ={deep:true}=)
 
 *** Examples
 #+include: "./Object.test.js" src js :lines "19-32"
@@ -335,7 +335,7 @@ The C = A \Delta{} B = {a,c,d}
 In Math \forall e \in C, e \in A and e\in B but 
 e \notin A \cup B.
 
-Also name as `symDiff` short for symmetric difference.
+Also name as =symDiff= short for symmetric difference.
 
 *** Parameters
 
@@ -348,9 +348,9 @@ Returns Set.
 
 ** Set.prototype.symDiff(aIteratable)
 
-`symDiff` short for symmetric difference.
+=symDiff= short for symmetric difference.
 
-Alias of `Set.prototype.disjunctive(aSet)`.
+Alias of =Set.prototype.disjunctive(aSet)=.
 
 ** is(v)
 
