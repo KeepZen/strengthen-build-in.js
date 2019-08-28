@@ -46,3 +46,11 @@ test('array.zip(arrayLike)', () => {
   expect(ret).toMatchObject([[1, "a"], [2, "b"], [3, "c"], [4, undefined]]);
   stop();
 })
+test('array.all(fun)', () => {
+  start();
+  let numbers = [1, 2, 3, 4];
+  expect(numbers.all(a => a > 0)).toBe(true);
+  expect(numbers.all(a => a < 4)).toBe(false);
+  expect([].all(a => a == 4)).toBe(false);
+  stop();
+})

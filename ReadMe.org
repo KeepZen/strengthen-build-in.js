@@ -39,99 +39,114 @@ const {stop} = require('@keepzen/strengthen-build-in.js/RegExp');
 stop();
 #+END_SRC
 
-** Array.prototype.last
+** Array
+*** Array.prototype.last
 
 Get the last element in the =array=, if =array= is empty, return =undefined=.
 
-*** Examples
+**** Examples
 #+INCLUDE: "./Array.test.js" src js :lines "2-11"
 
-** Array.prototype.first
+*** Array.prototype.first
 
 Get the first element in the =array=, if =array= is empty, return =undefined=.
 
-*** Examples
+**** Examples
 #+include: "./Array.test.js" src js :lines "11-19"
 
-** Array.prototype.order(fun)
+*** Array.prototype.order(fun)
 
 Sort the =arry= with =fun= get a new orderd array.
 
 =order(fun)= create a *new array*, but *not change* the origin array.
 
-*** Parameters
+**** Parameters
 
 + =fun=:=(a:any,b:any)=>int=
 
 Returns =Array=
-*** Examples
+**** Examples
 #+include: "./Array.test.js" src js :lines "20-31"
 
-** Array.prototype.reject(fun)
+*** Array.prototype.reject(fun)
 
 Filter out the =array=.
 
 If =fun= return =true= , the =ele= will not included in result, else included.
 
-*** Parameters
+**** Parameters
 
 - =fun=: =(ele:any,index:int)=> boolean=
 
 Returns =Array=.
-*** Examples
+**** Examples
 #+include: "./Array.test.js" src js :lines "31-39"
 
-** Array.prototype.zip(arrayLikelyObj)
+*** Array.prototype.zip(arrayLikelyObj)
 Zip the =array= with =arrayLikelyObj=.
 
-*** Parameters
+**** Parameters
 + =arrayLikelyObj= : An array likly object
-*** Examples
+**** Examples
 #+include: "./Array.test.js" src js :lines "40-49"
 
-** String.prototype.match(regexp[,index])
+*** Array.prototype.all(fun[,thisForFun])
+Similary as [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every#Description][Array.prototype.every]]
+but is this array is empty return =false=.
+**** Parameters
++ =fun= : `(element[,index,array])=>boolean`
++ =thisForFun= : the =this= of =fun= binding.
 
+Return boolean.
+
+**** Examples
+#+include: "./Array.test.js" src js :lines "49-57"
+
+*** String.prototype.match(regexp[,index])
 Match the =string= from =index=.
 
-*** Parameters
+**** Parameters
 
 + =pattern=: =(String|ExgExp)= 
 - =index=: int (optional, default =0=)
 
-*** Examples
+**** Examples
 #+include: "./String.test.js" src :lines "3-14"
 
-** Exgexp.prototype.exec(str[,index])
+** RegExp
+*** RxgExp.prototype.exec(str[,index])
 
-*** Parameters
+**** Parameters
 
 -   =str=: String. The string from which you want to exactor pattern.
 -   =index=:int. Match from where to begin. (optional, default =0=)
-*** Examples
+**** Examples
 #+include: "./RegExp.test.js" src js :lines "3-20"
 
-** Exgexp.prototype.test(str[,index])
+*** RxgExp.prototype.test(str[,index])
 
-*** Parameters
+**** Parameters
 
 -   =str=:String. The string be tested.
 -   =index=:int. From where to begin the test, default is zero. (optional, default =0=)
-*** Examples
+**** Examples
 #+include: "./RegExp.test.js" src js :lines "21-37"
 
-** Number.prototype.toFixed(minIntegerLength[,maxFloatLength])
+** Number
+*** Number.prototype.toFixed(minIntegerLength[,maxFloatLength])
 
-*** Parameters
+**** Parameters
 
 - =minIntegerLength=:uint.
 - =maxFloatLength=:uint. If =maxFloatLong= be ignored, methold will same as the origin =toFixed=. (optional, default =null=)
 
 Returns String. 
 
-*** Examples
+**** Examples
 #+include: "./Number.test.js" src js :lines "1-12"
-    
-** Date.prototype.format(fmt)
+
+** Date
+*** Date.prototype.format(fmt)
 
 Like the Unix =date= format. But just subset.
 
@@ -145,50 +160,55 @@ Like the Unix =date= format. But just subset.
 | %S      | second (00..60)                 |
 | %u      | day of week (1..7); 1 is Monday |
 
-*** Parameters
+**** Parameters
 
 -  =fmt=: string
 
 Returns String.
-*** Examples
+**** Examples
 #+include: "./Date.test.js" src js :lines "1-15"
 
-** Date.prototype.after({d,m,s})
+*** Date.prototype.after({d,m,s})
 Get the time after this date,with unit of *d*-ay, *m*-inute, or *s*-econd.
-*** parameters
+**** parameters
 + {d}: d:uint. Unit with day, default is 0.
 + {m}: m:unit. Unit with minute, default is 0.
 + {s}: s:unit. Unit with second, dfault is 0.
 
 Retun a Date after the special time.
-*** Examples
+**** Examples
 #+include: "./Date.test.js" src js :lines "15-22"
-** Date.prototype.plus({d,m,s})
+*** Date.prototype.plus({d,m,s})
 Alias of =Date.prototype.after()=
 
 Retun a Date after the special time.
-*** Examples
+**** Examples
 #+include: "./Date.test.js" src js :lines "24-33"
 
-** Date.prototype.before({d,m,s})
+*** Date.prototype.before({d,m,s})
 Get the time before this date, with unit  *d*-ay, *m*-inute, or *s*-econd.
-*** parameters
+**** parameters
 + {d}: d:uint. Unit with day, default is 0.
 + {m}: m:unit. Unit with minute, default is 0.
 + {s}: s:unit. Unit with second, dfault is 0.
 
 Retun a Date after the special time.
-*** Examples
+**** Examples
 #+include: "./Date.test.js" src js :lines "34-41"
 
-** Date.prototype.minus({d,m,s})
+*** Date.prototype.minus({d,m,s})
 Alias of =Date.prototype.before()=.
 
-** Date.prototype.timeZone :=string=
-The time zone of current system. 
+*** Date.prototype.timeZone : =string=
+The time zone of current system.
+
++ "+8" mean east 8 time zero.
++ "-8" mean west 8 time zero.
+**** Examples
 #+include: "./Date.test.js" src js :lines "42-46"
 
-** Object.prototype.not_instanceof(obj)
+** Object
+*** Object.prototype.not_instanceof(obj)
 
 If you want to check whether =object= is a instance of =Type=,
 it just like:
@@ -203,10 +223,10 @@ if(object instanceof Type){
 
 
 So, the fellow lines are what I wrote, when I want to 
-check whether =object= is not a instaceof =Type=:
+check whether =object= is not an instance of =Type=:
 
 #+BEGIN_SRC js
-if( ! object instaceof Type ){
+if(! object instaceof Type ){
    console.log('a');
 }else{
    console.log('b');
@@ -230,50 +250,50 @@ if( object.not_instanceof(Type)){
 #+END_SRC
 
 
-*** Parameters
+**** Parameters
 
 -  aClass: Class
 
 Returns boolean.
-*** Examples
+**** Examples
 #+include: "./Object.test.js" src js :lines "2-9"
 
-** Object.is_primary_type(v)
+*** Object.is_primary_type(v)
 
 Check if =v= is primary type.
+
 If a value is not a instance of =Object=,
 it is a primary type.
 
-*** Parameters
+**** Parameters
 
 -   =v=: any 
 
 Returns boolean.
-*** Examples
+**** Examples
 #+include: "./Object.test.js" src js :lines "9-19"
 
-** Object.freeze(v)
-
-=Object.constant= rename to =Object.freeze=.
-
-*** Parameters
+*** Object.freeze(v)
+Freeze =v= deeply or shallowly.
+**** Parameters
 
 -   =v=: any 
 -   =arg$1=: Object  (optional, default ={deep:true}=)
 
-*** Examples
+**** Examples
 #+include: "./Object.test.js" src js :lines "19-32"
 
-** Set.prototype.not_has(v)
+** Set
+*** Set.prototype.not_has(v)
 
-*** Parameters
+**** Parameters
 
 -   =v= :any
 
 Returns boolean 
-*** Examples
+**** Examples
 #+include: "./Set.test.js" src js :lines "2-6"
-** Set.prototype.diff(iteratable)
+*** Set.prototype.diff(iteratable)
 
 Support A is {a,b}, B is {b,c,d},
 then C = A - B = {a}.
@@ -284,16 +304,16 @@ $$
 \forall e \in C, \implies e \in A,\text{ and } e \notin B
 $$.
 
-*** Parameters
+**** Parameters
 
 -   aSet:(Iteratable)
 
 Returns Set.
 
-*** Examples
+**** Examples
 #+include: "./Set.test.js" src js :lines "6-12"
 
-** Set.prototype.union(iteratable)
+*** Set.prototype.union(iteratable)
 
 Support A= {a,b}, B = {b,c,d},
 then C = A \cup{} B  = {a,b,c,d}.
@@ -301,19 +321,19 @@ then C = A \cup{} B  = {a,b,c,d}.
 In Math as 
 
 $$
-\forall e \in C, \implies e \in A \text{ or } e \in B
+\forall e \in C \implies e \in A \text{ or } e \in B
 $$
 
-*** Parameters
+**** Parameters
 
 -   aSet: Iteratable 
 
 Returns Set.
 
-*** Examples
+**** Examples
 #+include: "./Set.test.js" src js :lines "12-21"
 
-** Set.prototype.intersection(aIteratable)
+*** Set.prototype.intersection(aIteratable)
 
 Support A is {a,b}, B is {b,c,d},
 then C = A \cap{} B = {b}.
@@ -323,16 +343,16 @@ $$
 \forall e\in C, \implies e \in A \text{ and } e \in B
 $$
 
-*** Parameters
+**** Parameters
 
 -   aSet: Iteratable 
 
 Returns Set.
 
-*** Examples
+**** Examples
 #+include: "./Set.test.js" src js :lines "22-31"
 
-** Set.prototype.disjunctive(aIteratable)
+*** Set.prototype.disjunctive(aIteratable)
 
 A is {a,b}, B is {b,c,d}
 The C = A \Delta{} B = {a,c,d}
@@ -341,16 +361,16 @@ e \notin A \cup B.
 
 Also name as =symDiff= short for symmetric difference.
 
-*** Parameters
+**** Parameters
 
 -   aSet: Iteratable 
 
 Returns Set.
 
-*** Examples
+**** Examples
 #+include: "./Set.test.js" src js :lines "32-40"
 
-** Set.prototype.symDiff(aIteratable)
+*** Set.prototype.symDiff(aIteratable)
 
 =symDiff= short for symmetric difference.
 

@@ -23,6 +23,9 @@ function reject(fn) {
 function zip(arrayLike) {
   return this.map((ele, index) => [ele, arrayLike[index]]);
 }
+function all(fun, thisCallBack) {
+  return this.length > 0 && this.every(fun, thisCallBack);
+}
 const { addNewProperty, deleteNewProperties } = require('./_protypeOperator');
 
 const start = () => {
@@ -31,6 +34,7 @@ const start = () => {
   addNewProperty('reject', prototype, { value: reject }, newProperSet);
   addNewProperty('order', prototype, { value: order }, newProperSet);
   addNewProperty('zip', prototype, { value: zip }, newProperSet);
+  addNewProperty('all', prototype, { value: all }, newProperSet);
 }
 
 const stop = () => {
