@@ -94,7 +94,7 @@ Zip the =array= with =arrayLikelyObj=.
 Similary as [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every#Description][Array.prototype.every]]
 but is this array is empty return =false=.
 **** Parameters
-+ =fun= : `(element[,index,array])=>boolean`
++ =fun= : ~(element[,index,array])=>boolean~
 + =thisForFun= : the =this= of =fun= binding.
 
 Return boolean.
@@ -300,9 +300,7 @@ then C = A - B = {a}.
 
 In Math, that is
 
-$$
-\forall e \in C, \implies e \in A,\text{ and } e \notin B
-$$.
+\forall{} e , if e \in{} A, and  e \notin{} B, then e \in{} C= A - B.
 
 **** Parameters
 
@@ -320,9 +318,7 @@ then C = A \cup{} B  = {a,b,c,d}.
 
 In Math as 
 
-$$
-\forall e \in C \implies e \in A \text{ or } e \in B
-$$
+\forall{} e \in{} C = A\cup{}B meaning e \in{} A or e \in{} B.
 
 **** Parameters
 
@@ -339,9 +335,8 @@ Support A is {a,b}, B is {b,c,d},
 then C = A \cap{} B = {b}.
 In Math
 
-$$
-\forall e\in C, \implies e \in A \text{ and } e \in B
-$$
+\forall{} e \in{} C= A \cap{} B, meaing e \in{} A and  e \in{} B.
+
 
 **** Parameters
 
@@ -355,9 +350,10 @@ Returns Set.
 *** Set.prototype.disjunctive(aIteratable)
 
 A is {a,b}, B is {b,c,d}
-The C = A \Delta{} B = {a,c,d}
-In Math \forall e \in C, e \in A and e\in B but 
-e \notin A \cup B.
+The C = A \Delta{} B = {a,c,d}.
+
+In Math \forall{} e \in{} C== A\Delta{}B, e \in{} A and e \in{} B but 
+e \notin{} A\cup{}B.
 
 Also name as =symDiff= short for symmetric difference.
 
@@ -376,13 +372,13 @@ Returns Set.
 
 Alias of =Set.prototype.disjunctive(aSet)=.
 
-** is(v)
+** whether(v)
 
-Check  a =v= if is something.
+Check =whehte=  =v= is something.
 
 Make the code read like English.
 
-=is(v)= return a checker. A checker has fellow attributes:
+=whether(v)= return a checker. A checker has fellow attributes:
 
 1.  a_number
 2.  a_bigint
@@ -413,10 +409,6 @@ Return boolean.
 
 *** Examples
 #+include: "./whether.test.js" src js :lines "1-9"
-
-** whether
-
-Alias of is(v).
 
 
 

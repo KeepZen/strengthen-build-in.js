@@ -94,9 +94,9 @@ const is = (v) => {
   );
 }
 const g = global || window;
+const whether = is;
 const start = () => {
-  g.is = is;
-  g.whether = g.whether;
+  g.whether = whether;
 }
 const stop = () => {
   if (g.is == is) {
@@ -106,9 +106,7 @@ const stop = () => {
     delete g.whether;
   }
 }
-const whether = is;
 module.exports = {
   whether,
-  is,
   start, stop
 }
