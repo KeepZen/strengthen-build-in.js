@@ -1,8 +1,9 @@
-#+OPTIONS: ^:{}
+#+OPTIONS: ^:{} TOC:nil
 [[https://img.shields.io/npm/v/@keepzen/strengthen-build-in.js.svg]]
 [[https://img.shields.io/npm/dm/@keepzen/strengthen-build-in.js.svg]]
 [[https://img.shields.io/npm/dt/@keepzen/strengthen-build-in.js.svg]]
 
+#+TOC: headlines 2
 ** start()
 
 You can use it as whole:
@@ -102,6 +103,7 @@ Return boolean.
 **** Examples
 #+include: "./Array.test.js" src js :lines "49-57"
 
+** String
 *** String.prototype.match(regexp[,index])
 Match the =string= from =index=.
 
@@ -393,22 +395,41 @@ Make the code read like English.
 
 And a method =checker.instanceof(Type)=.
 
-*** Parameters
+**** Parameters
 
 -  =v=:any
 Returns *Checker*. 
 
-*** Examples
+**** Examples
 #+include: "./whether.test.js" src js :lines "9-26"
 
-** checker.instanceof(aType)
-*** Parameters
+*** checker.instanceof(aType)
+**** Parameters
 + aType:Type
 
 Return boolean.
 
-*** Examples
+**** Examples
 #+include: "./whether.test.js" src js :lines "1-9"
 
 
 
+*** checker.not: =checker=
+To reverse the result of =checer.a_xxx=.
+**** Examaple
+#+include: "./whether.test.js" src js :lines "18-19"
+** Math
+*** Math.randomRange({[begin,]end})
+Return a number \in{} [begin,end).
+
++ begin: =float= default is 0.
++ end: =float=.
+
+**** Examples
+#+include: "./Math.test.js" src js
+
+*** Math.randomInt( {[begin,]end})
+Return a int \in{} [begin,end).
+
++ begin: =float= default is 0.
++ end: =flaot=.

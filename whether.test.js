@@ -1,4 +1,4 @@
-const whether = require('./whether').is;
+const whether = require('./whether').whether;
 
 test('whether(a).instaceof(Type)', () => {
   expect(whether({}).instanceof(Object)).toBe(true);
@@ -6,7 +6,7 @@ test('whether(a).instaceof(Type)', () => {
   expect(whether(new Number(1)).instanceof(Number)).toBe(true);
   expect(whether(null).instanceof(Object)).toBe(false);
 })
-test("whether(a).aXXX", () => {
+test("whether(a).a_xxx", () => {
   expect(whether(1).a_number).toBe(true);
   expect(whether(new Number(1)).a_number);
   expect(whether(1).not.a_string).toBe(true);

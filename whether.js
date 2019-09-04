@@ -1,4 +1,4 @@
-const is = (v) => {
+const whether = (v) => {
   const instanceOf = (type) => v instanceof type;
   const a_number = () => v instanceof Number || typeof v == 'number';
   const a_bigint = () => typeof v == 'bigint';
@@ -94,13 +94,12 @@ const is = (v) => {
   );
 }
 const g = global || window;
-const whether = is;
 const start = () => {
   g.whether = whether;
 }
 const stop = () => {
-  if (g.is == is) {
-    delete g.is;
+  if (g.whether == whether) {
+    delete g.whether;
   }
   if (g.whether == whether) {
     delete g.whether;
