@@ -147,6 +147,12 @@ Returns String.
 **** Examples
 #+include: "./Number.test.js" src js :lines "1-12"
 
+*** Number.prototype.round({endAfterPoint[, roundInGreaterThan = 4]})
+**** Parameters
++ endAfterPoint :: int, special after the point how many digits should to keep
++ roundInGreaterThan :: int \in{} [1,9], default is 4. 
+**** Examaple
+#+include: "./Number.test.js" src js :lines "13-22"
 ** Date
 *** Date.prototype.format(fmt)
 
@@ -204,10 +210,13 @@ Alias of =Date.prototype.before()=.
 *** Date.prototype.timeZone : =string=
 The time zone of current system.
 
-+ "+8" mean east 8 time zero.
-+ "-8" mean west 8 time zero.
++ "+8" mean east 8 time zone.
++ "-8" mean west 8 time zone.
 **** Examples
 #+include: "./Date.test.js" src js :lines "42-46"
+*** Date.prototype.toString([fmt]) : =string=
++ =fmt= : =string=  default is ="%Y-%m-%d %H-%M-%S"= 
+
 
 ** Object
 *** Object.prototype.not_instanceof(obj)

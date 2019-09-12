@@ -40,10 +40,18 @@ function getTimeZone() {
     return zh + ""
   }
 }
+const _toString = Date.prototype.toString;
+function toString(fmt = '%Y-%m-%d %H-%M-%S') {
+  return format.call(this, fmt);
+}
 
 const newPropertySet = new Set();
-const { addNewProperty, deleteNewProperties } = require('./_protypeOperator');
+const {
+  addNewProperty, deleteNewProperties,
+  replaceMethodWithNew, recoverOldMethod,
+} = require('./_protypeOperator');
 
+const nameNewOldMap = new Map();
 const start = () => {
   addNewProperty('format', Date.prototype, { value: format }, newPropertySet)
   addNewProperty('after', Date.prototype, { value: after }, newPropertySet);
@@ -51,9 +59,12 @@ const start = () => {
   addNewProperty('before', Date.prototype, { value: before }, newPropertySet);
   addNewProperty('minus', Date.prototype, { value: before }, newPropertySet);
   addNewProperty('timeZone', Date.prototype, { get: getTimeZone }, newPropertySet);
+  nameNewOldMap.set('toString', [toString, _toString]);
+  replaceMethodWithNew(Date.prototype, { value: toString }, nameNewOldMap);
 }
 const stop = () => {
   deleteNewProperties(Date.prototype, newPropertySet);
+  recoverOldMethod(Date.prototype, nameNewOldMap);
 }
 
 module.exports = {
