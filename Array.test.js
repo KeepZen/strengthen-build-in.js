@@ -54,3 +54,13 @@ test('array.all(fun)', () => {
   expect([].all(a => a == 4)).toBe(false);
   stop();
 })
+
+test('array.groupBy(fn)', () => {
+  start();
+  let [a, b] = [1, 2, 3, 4].groupBy(n => n % 2 ? "odd" : "even");
+  const odds = [1, 3]; odds.name = 'odd';
+  const evens = [2, 4]; evens.name = 'even';
+  expect(a).toMatchObject(odds);
+  expect(b).toMatchObject(evens);
+  stop();
+})

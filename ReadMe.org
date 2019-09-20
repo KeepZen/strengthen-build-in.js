@@ -94,6 +94,7 @@ Zip the =array= with =arrayLikelyObj=.
 *** Array.prototype.all(fun[,thisForFun])
 Similary as [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every#Description][Array.prototype.every]]
 but is this array is empty return =false=.
+
 **** Parameters
 + =fun= : ~(element[,index,array])=>boolean~
 + =thisForFun= : the =this= of =fun= binding.
@@ -102,6 +103,16 @@ Return boolean.
 
 **** Examples
 #+include: "./Array.test.js" src js :lines "49-57"
+*** Array.prototype.groupBy(fun)
+Return a array of array.
+
+The inner array hava property =name=.
+
+=fun= expect take one argument and return a value. 
+The returned value is used as the =name= propery of the inner array.
+
+**** Examples
+#+include: "./Array.test.js" src js :lines "58-67"
 
 ** String
 *** String.prototype.match(regexp[,index])

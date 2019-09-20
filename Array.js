@@ -26,6 +26,24 @@ function zip(arrayLike) {
 function all(fun, thisCallBack) {
   return this.length > 0 && this.every(fun, thisCallBack);
 }
+
+function groupBy(fun) {
+  return this.reduce(
+    (result, ele) => {
+      const groupName = fun(ele);
+      const group = result.find(e => e.name == groupName) || [];
+      const groupDonotHaveName = (group.name == undefined);
+      if (groupDonotHaveName) {
+        group.name = groupName;
+        result.push(group);
+      }
+      group.push(ele);
+      return result;
+    },
+    []
+  )
+}
+
 const { addNewProperty, deleteNewProperties } = require('./_protypeOperator');
 
 const start = () => {
@@ -35,6 +53,7 @@ const start = () => {
   addNewProperty('order', prototype, { value: order }, newProperSet);
   addNewProperty('zip', prototype, { value: zip }, newProperSet);
   addNewProperty('all', prototype, { value: all }, newProperSet);
+  addNewProperty('groupBy', prototype, { value: groupBy }, newProperSet);
 }
 
 const stop = () => {
